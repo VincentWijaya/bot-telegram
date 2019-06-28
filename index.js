@@ -20,4 +20,8 @@ bot.help((ctx) => {
   );
 });
 
+bot.action('myId', (ctx) => {
+  ctx.reply(`🆔: ${ctx.from.id}`);
+});
+
 bot.launch();
