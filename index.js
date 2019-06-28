@@ -21,7 +21,7 @@ bot.help((ctx) => {
 });
 
 bot.action('myId', (ctx) => {
-  ctx.reply(`🆔: ${ctx.from.id}`);
+  ctx.editMessageText(`🆔: ${ctx.from.id}`);
 });
 
 bot.launch();
