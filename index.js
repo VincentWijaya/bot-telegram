@@ -1,8 +1,23 @@
 const Telegraf = require('telegraf');
+const { Markup } = require('telegraf');
+require('dotenv').config();
 
 const bot = new Telegraf(process.env.BOT_TOKEN);
-bot.start((ctx) => ctx.reply('Welcome!'));
-bot.help((ctx) => ctx.reply('Send me a sticker'));
-bot.on('sticker', (ctx) => ctx.reply('👍'));
-bot.hears('hi', (ctx) => ctx.reply('Hey there'));
+
+bot.start((ctx) => ctx.reply('Welcome! Type /help to see available commands!'));
+
+bot.help((ctx) => {
+  ctx.reply(`List Perintah:`,
+    Markup.inlineKeyboard([
+      [
+        Markup.callbackButton("My ID", 'myId'),
+        Markup.callbackButton("My Report", 'myReport')
+      ], [
+        Markup.callbackButton("Harga", 'harga'),
+        Markup.callbackButton("Report", 'report')
+      ]
+    ]).extra()
+  );
+});
+
 bot.launch();
